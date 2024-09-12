@@ -16,6 +16,9 @@ class User extends Authenticatable
     use softDeletes;
 
     const CREATED_AT = null;
+    // 後で必要になるかも
+    // const CREATED_AT = 'created_at';
+    // const UPDATED_AT = 'updated_at';
 
     /**
      * The attributes that are mass assignable.
@@ -67,7 +70,8 @@ class User extends Authenticatable
     }
 
     public function subjects(){
-        return ;// リレーションの定義
+        // リレーションの定義
+        return $this->belongsToMany('App\Models\Subjects\Subject', 'subjec_users', 'user_id', 'subjec_id');
     }
 
     // いいねしているかどうか
