@@ -184,11 +184,8 @@
                     </div>
                 </div>
                 <div class="mt-5 text-right">
-                    <!-- 後で修正 -->
-                    <!-- <input type="submit" class="btn btn-primary register_btn" disabled value="新規登録"
-                        onclick="return confirm('登録してよろしいですか？')"> -->
-                        <a href="{{ route('loginView') }}" class="btn btn-primary register_btn"
-                        onclick="return confirm('登録してよろしいですか？')">新規登録</a>
+                    <input type="submit" class="btn btn-primary register_btn" disabled value="新規登録"
+                        onclick="return confirm('登録してよろしいですか？')">
                 </div>
                 <div class="text-center">
                     <a href="{{ route('loginView') }}">ログイン</a>

@@ -18,6 +18,10 @@ class CreateSubjectUsersTable extends Migration
             $table->integer('user_id')->comment('ユーザーid');
             $table->integer('subject_id')->comment('選択科目id');
             $table->timestamp('created_at')->nullable()->comment('登録日時');
+
+            // 外部キー制約の追加
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
         });
     }
 
@@ -28,6 +32,12 @@ class CreateSubjectUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subject_users');
+        Schema::dropIfExists('subject_users', function (Blueprint $table) {
+            // 外部キー制約を削除
+            $table->dropForeign(['user_id']);
+            $table->dropForeign(['subject_id']);
+        });
+
+        Schema::dropIfExisits('subject_users');
     }
 }
