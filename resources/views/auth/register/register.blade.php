@@ -27,6 +27,9 @@
                             <div class="border-bottom border-primary" style="width:140px;">
                                 <input type="text" style="width:140px;" class="border-0 over_name" name="over_name">
                             </div>
+                            @error('over_name')
+                                <div class="text-danger" style="font-size:12px">{{ $message }}</div>
+                            @enderro
                         </div>
                         <div class="" style="width:140px">
                             <label class=" d-block m-0" style="font-size:13px">名</label>
@@ -34,6 +37,9 @@
                                 <input type="text" style="width:140px;" class="border-0 under_name"
                                     name="under_name">
                             </div>
+                            @error('under_name')
+                                <div class="text-danger" style="font-size:12px">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="d-flex mt-3" style="justify-content:space-between">
@@ -43,6 +49,9 @@
                                 <input type="text" style="width:140px;" class="border-0 over_name_kana"
                                     name="over_name_kana">
                             </div>
+                            @error('over_name_kana')
+                                <div class="text-danger" style="font-size:12px">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="" style="width:140px">
                             <label class="d-block m-0" style="font-size:13px">メイ</label>
@@ -50,6 +59,9 @@
                                 <input type="text" style="width:140px;" class="border-0 under_name_kana"
                                     name="under_name_kana">
                             </div>
+                            @error('under_name_kana')
+                                <div class="text-danger" style="font-size:12px">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="mt-3">
@@ -57,9 +69,15 @@
                         <div class="border-bottom border-primary">
                             <input type="mail" class="w-100 border-0 mail_address" name="mail_address">
                         </div>
+                        @error('mail_address')
+                             <div class="text-danger" style="font-size:12px">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="mt-3">
+                    @error('sex')
+                        <div class="text-danger" style="font-size:12px">性別を選択してください</div>
+                    @enderror
                     <input type="radio" name="sex" class="sex" value="1">
                     <label style="font-size:13px">男性</label>
                     <input type="radio" name="sex" class="sex" value="2">
