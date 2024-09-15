@@ -219,7 +219,7 @@
                         onclick="return confirm('登録してよろしいですか？')">
                 </div>
                 <div class="text-center">
-                    <a href="{{ route('loginView') }}">ログイン</a>
+                    <a href="{{ route('login') }}">ログイン</a>
                 </div>
             </div>
         </div>
