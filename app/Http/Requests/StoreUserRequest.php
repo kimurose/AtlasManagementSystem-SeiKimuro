@@ -16,6 +16,14 @@ class StoreUserRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation()
+    {
+        // old_year, old_month, old_day から birth_day を組み立てる
+        $this->merge([
+            'birth_day' => sprintf('%04d-%02d-%02d', $this->old_year, $this->old_month, $this->old_day)
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -27,12 +35,15 @@ class StoreUserRequest extends FormRequest
             //
             'over_name' => 'required|string|max:10',
             'under_name' => 'required|string|max:10',
-            'over_name_kana' => 'required|string|regex:/^[ァ-ヶー　]+$/u|max:30',
-            'under_name_kana' => 'required|string|regex:/^[ァ-ヶー　]+$/u|max:30',
+            'over_name_kana' => 'required|string|regex:/^[ァ-ヶー]+$/u|max:30',
+            'under_name_kana' => 'required|string|regex:/^[ァ-ヶー]+$/u|max:30',
             'mail_address' => 'required|email|unique:users,mail_address|max:100',
-            'sex' => 'required|in:male,female,other',
-            'birth_day' => 'required|date|date_format:Y-m-d|after_or_equal:2000-01-01|before_or_equal:today',
-            'role' => 'required|in:教師(国語),教師(数学),教師(英語),生徒',
+            'sex' => 'required|integer|in:1,2,3',
+            // 'birth_day' => 'required|date|date_format:Y-m-d|after_or_equal:2000-01-01|before_or_equal:today',
+            'old_year' => 'required|integer|min:2000|max:2024',
+            'old_month' => 'required|integer|min:1|max:12',
+            'old_day' => 'required|integer|min:1|max:31',
+            'role' => 'required|integer|in:1,2,3',
             'password' => 'required|string|between:8,30|confirmed',
         ];
     }
@@ -42,7 +53,7 @@ class StoreUserRequest extends FormRequest
      *
      * @return array
      */
-    public function message()
+    public function messages()
     {
         return [
         'over_name.required' => '姓は必須です。',
@@ -71,11 +82,25 @@ class StoreUserRequest extends FormRequest
         'sex.required' => '性別は必須です。',
         'sex.in' => '性別は「male」、「female」、「other」のいずれかでなければなりません。',
         
-        'birth_day.required' => '生年月日は必須です。',
-        'birth_day.date' => '生年月日は有効な日付でなければなりません。',
-        'birth_day.date_format' => '生年月日は「Y-m-d」形式で入力してください。',
-        'birth_day.after_or_equal' => '生年月日は2000年1月1日以降の日付でなければなりません。',
-        'birth_day.before_or_equal' => '生年月日は今日の日付までの日付でなければなりません。',
+        // 'birth_day.required' => '生年月日は必須です。',
+        // 'birth_day.date' => '生年月日は有効な日付でなければなりません。',
+        // 'birth_day.date_format' => '生年月日は「Y-m-d」形式で入力してください。',
+        // 'birth_day.after_or_equal' => '生年月日は2000年1月1日以降の日付でなければなりません。',
+        // 'birth_day.before_or_equal' => '生年月日は今日の日付までの日付でなければなりません。',
+        'old_year.required' => '年は必須です。',
+        'old_year.integer' => '年は整数でなければなりません。',
+        'old_year.min' => '年は2000以上でなければなりません。',
+        'old_year.max' => '年は2024以下でなければなりません。',
+        
+        'old_month.required' => '月は必須です。',
+        'old_month.integer' => '月は整数でなければなりません。',
+        'old_month.min' => '月は1以上でなければなりません。',
+        'old_month.max' => '月は12以下でなければなりません。',
+        
+        'old_day.required' => '日は必須です。',
+        'old_day.integer' => '日は整数でなければなりません。',
+        'old_day.min' => '日は1以上でなければなりません。',
+        'old_day.max' => '日は31以下でなければなりません。',
         
         'role.required' => '役割は必須です。',
         'role.in' => '役割は「教師(国語)」、「教師(数学)」、「教師(英語)」、「生徒」のいずれかでなければなりません。',

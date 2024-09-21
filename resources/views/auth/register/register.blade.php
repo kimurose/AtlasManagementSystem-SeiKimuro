@@ -87,10 +87,10 @@
                     <label style="font-size:13px">その他</label>
                 </div>
                 <div class="mt-3">
+                    <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
                     @error('old_year')
                         <div class="text-danger" style="font-size:12px">{{ $message }}</div>
                     @enderror
-                    <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
                     <select class="old_year" name="old_year">
                         <option value="">-----</option>
                         <option value="1985">1985</option>
@@ -121,33 +121,39 @@
                         <option value="2010">2010</option>
                     </select>
                     <label style="font-size:13px">年</label>
+                    @error('old_month')
+                        <div class="text-danger" style="font-size:12px">{{ $message }}</div>
+                    @enderror
                     <select class="old_month" name="old_month">
-                        <option value="none">-----</option>
-                        <option value="01">1</option>
-                        <option value="02">2</option>
-                        <option value="03">3</option>
-                        <option value="04">4</option>
-                        <option value="05">5</option>
-                        <option value="06">6</option>
-                        <option value="07">7</option>
-                        <option value="08">8</option>
-                        <option value="09">9</option>
+                        <option value="">-----</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
                         <option value="10">10</option>
                         <option value="11">11</option>
                         <option value="12">12</option>
                     </select>
                     <label style="font-size:13px">月</label>
+                    @error('old_day')
+                        <div class="text-danger" style="font-size:12px">{{ $message }}</div>
+                    @enderror
                     <select class="old_day" name="old_day">
-                        <option value="none">-----</option>
-                        <option value="01">1</option>
-                        <option value="02">2</option>
-                        <option value="03">3</option>
-                        <option value="04">4</option>
-                        <option value="05">5</option>
-                        <option value="06">6</option>
-                        <option value="07">7</option>
-                        <option value="08">8</option>
-                        <option value="09">9</option>
+                        <option value="">-----</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
                         <option value="10">10</option>
                         <option value="11">11</option>
                         <option value="12">12</option>
