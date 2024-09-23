@@ -87,7 +87,7 @@
                 </div>
                 <div class="mt-3">
                     <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
-                    @error('old_year')
+                    @error('birth_day')
                         <div class="text-danger" style="font-size:12px">{{ $message }}</div>
                     @enderror
                     <select class="old_year" name="old_year">
@@ -120,9 +120,9 @@
                         <option value="2010">2010</option>
                     </select>
                     <label style="font-size:13px">年</label>
-                    @error('old_month')
+                    <!-- @error('old_month')
                         <div class="text-danger" style="font-size:12px">{{ $message }}</div>
-                    @enderror
+                    @enderror -->
                     <select class="old_month" name="old_month">
                         <option value="">-----</option>
                         <option value="1">1</option>
@@ -139,9 +139,9 @@
                         <option value="12">12</option>
                     </select>
                     <label style="font-size:13px">月</label>
-                    @error('old_day')
+                    <!-- @error('old_day')
                         <div class="text-danger" style="font-size:12px">{{ $message }}</div>
-                    @enderror
+                    @enderror -->
                     <select class="old_day" name="old_day">
                         <option value="">-----</option>
                         <option value="1">1</option>
