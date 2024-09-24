@@ -72,8 +72,17 @@ class PostsController extends Controller
         Post::findOrFail($id)->delete();
         return redirect()->route('post.show');
     }
-    public function mainCategoryCreate(Request $request){
+    public function mainCategoryCreate(PostFormRequest $request){
         MainCategory::create(['main_category' => $request->main_category_name]);
+        return redirect()->route('post.input');
+    }
+
+    public function subCategoryCreate(PostFormRequest $request){
+        SubCategory::create([
+            'sub_category' => $request->input('sub_category_name'),
+            'main_category_id' => $request->input('main_category_id'),
+        ]);
+
         return redirect()->route('post.input');
     }
 
