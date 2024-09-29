@@ -20,7 +20,7 @@ use Auth;
 class PostsController extends Controller
 {
     public function show(Request $request){
-        $posts = Post::with('user')->withCount('postComments')->get();
+        $posts = Post::with(['user', 'subCategories'])->withCount('postComments')->get();
         // dd($posts);
         $categories = MainCategory::get();
         $like = new Like;
@@ -54,11 +54,15 @@ class PostsController extends Controller
     }
 
     public function postCreate(PostFormRequest $request){
+        // dd($request);
         $post = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
-            'post' => $request->post_body
+            'post' => $request->post_body,
         ]);
+
+        $post->subCategories()->attach($request->post_category_id);
+
         return redirect()->route('post.show');
     }
 

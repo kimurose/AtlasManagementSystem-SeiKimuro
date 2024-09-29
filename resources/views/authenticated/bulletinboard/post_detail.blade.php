@@ -15,6 +15,12 @@
           </div>
         </div>
 
+        <p>
+          @foreach($post->subCategories as $subCategory)
+          <span>{{ $subCategory->sub_category ?? 未設定 }}</span>
+          @endforeach
+        </p>
+
         <div class="contributor d-flex">
           <p>
             <span>{{ $post->user->over_name }}</span>
