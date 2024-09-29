@@ -139,4 +139,33 @@ class PostsController extends Controller
 
         return response()->json();
     }
+
+    // カテゴリー検索機能
+    public function search(Request $request){
+        $keyword = $request->input('keyword');
+        $posts = [];
+
+        if ($keyword) {
+            $subCategories = SubCategory::where('sub_category', $keyword)->pluck('id');
+
+            $posts = Post::whereIn('id', function ($query) use ($subCategories) {
+                $query->select('post_id')->from('post_sub_categories')->whereIn('sub_category_id', $subCategories);
+            })->with('user')->withCount('postComments')->get();
+        }
+
+        $categories = MainCategory::with('subCategories')->get();
+
+        return view('authenticated.bulletinboard.posts', compact('posts', 'categories'));
+    }
+
+    public function showBySubCategory($id){
+        $posts = Post::with(['user', 'subCategories'])->whereHas('subCategories', function($query) use ($id) {
+            $query->where('sub_category_id', $id);
+        })
+        ->withCount('postComments')
+        ->get();
+
+        $categories = MainCategory::with('subCategories')->get();
+        return view('authenticated.bulletinboard.posts', compact('posts', 'categories'));
+    }
 }

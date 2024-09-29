@@ -14,6 +14,13 @@
             @endif
           </div>
         </div>
+        
+        @if ($errors->has('post_title'))
+         <div class="text-danger">{{ $errors->first('post_title') }}</div>
+        @endif
+        @if ($errors->has('post_body'))
+         <div class="text-danger">{{ $errors->first('post_body') }}</div>
+        @endif
 
         <p>
           @foreach($post->subCategories as $subCategory)
