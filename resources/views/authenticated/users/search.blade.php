@@ -45,7 +45,21 @@
       </div>
       <div>
         @if($user->role == 4)
-        <span>選択科目 :</span>
+        <span>選択科目 :
+          <ul>
+            @foreach($user->subjects as$subject)
+              <li>
+                @if($subject->id == 1)
+                  国語
+                @elseif($subject->id == 2)
+                  数学
+                @elseif($subject->id == 3)
+                  英語
+                @endif
+              </li>
+            @endforeach
+          </ul>
+        </span>
         @endif
       </div>
     </div>
