@@ -26,12 +26,4 @@ class SearchResultFactories{
     return $allUsers->resultUsers($keyword, $category, $updown, $gender, $role, $subjects);
     }
   }
-
-  public function fillterBySubjects($query, $subjects) {
-    if (!empty($subjects)) {
-      $query->whereHas('subjects', function ($q) use ($subjects) {
-        $q->whereIn('id', $subjects);
-      });
-    }
-  }
 }
