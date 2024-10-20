@@ -31,18 +31,22 @@ class CalendarWeekDay{
 
     $html[] = '<div class="text-left">';
     if($one_part){
-      $html[] = '<p class="day_part m-0 pt-1">1部</p>';
+        $reserved_count = $one_part->users->count(); // 残り枠
+        $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['part' => 1, 'date' => $ymd]) . '">1部</a> ' . $reserved_count . '</p>';
     }
     if($two_part){
-      $html[] = '<p class="day_part m-0 pt-1">2部</p>';
+        $reserved_count = $two_part->users->count(); // 残り枠
+        $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['part' => 2, 'date' => $ymd]) . '">2部</a> ' . $reserved_count . '</p>';
     }
     if($three_part){
-      $html[] = '<p class="day_part m-0 pt-1">3部</p>';
+        $reserved_count = $three_part->users->count(); // 残り枠
+        $html[] = '<p class="day_part m-0 pt-1"><a href="' . route('calendar.admin.detail', ['part' => 3, 'date' => $ymd]) . '">3部</a> ' . $reserved_count . '</p>';
     }
     $html[] = '</div>';
 
     return implode("", $html);
-  }
+}
+
 
 
   function onePartFrame($day){
