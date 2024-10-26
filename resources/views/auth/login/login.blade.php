@@ -13,6 +13,9 @@
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
+  <div class="text-center pt-3">
+    <img src="{{ asset('image/atlas-black.png') }}" alt="Atlas Logo">
+  </div>
   <form action="{{ route('loginPost') }}" method="POST">
     {{ csrf_field() }}
     <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
@@ -33,7 +36,7 @@
           <input type="submit" class="btn btn-primary" value="ログイン">
         </div>
         <div class="text-center">
-          <a href="{{ route('registerView') }}">新規登録</a>
+          <a href="{{ route('registerView') }}">新規登録はこちら</a>
         </div>
       </div>
     </div>

@@ -92,8 +92,36 @@ li{
 
 /* 掲示板 */
 .sub_categories{
-  display:none;
+  /* display:none; */
+  display: inline-block;
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 10px;
+  background-color: #03AAD2;
+  color: white;
+  font-size: 0.9em;
+  text-decoration: none;
+  letter-spacing: -1.5px;
 }
+
+.sub_categories span {
+  font-weight: bold;
+}
+
+.post_title {
+  color: black;
+  font-weight: bold;
+}
+
+.post_submit {
+  display: inline-block;
+  background-color: #03AAD2;
+  border-radius: 5px;
+  color: white;
+  width: 100%;
+  text-decoration: none;
+}
+
 .post_create_area{
   background:#FFF;
   border-radius:10px;
@@ -113,6 +141,13 @@ li{
 .post_bottom_area{
   justify-content: space-between;
 }
+
+.like_btn,
+.fa-comment{
+  color: #766f6f;
+}
+
+
 .like_btn,
 .un_like_btn{
   cursor:pointer;
@@ -190,9 +225,45 @@ li{
   border-radius:5px;
   padding:0 5px;
   border:none;
-  background:#999;
+  background: rgb(228, 218, 27);
   color:#FFF;
+  width: 49%;
 }
+
+.category_like_btn {
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 0 5px;
+  border: none;
+  background: rgb(224, 27, 158);
+  color: white;
+  width: 49%;
+}
+
+.category_list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.main_category {
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.sub_category_list {
+  margin-left: 20px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.arrow-icon {
+  transition: transform 0.3s;
+}
+
+.arrow-icon.rotate {
+  transform: rotate(180deg);
+}
+
 .main_categories span,
 .sub_categories li input{
   list-style:none;
@@ -232,4 +303,16 @@ li{
 }
 .subject_inner{
   display:none;
+}
+
+.search_conditions {
+  cursor: pointer;
+}
+
+.search_conditions i {
+  transition: transform 0.3s;
+}
+
+.search_conditions.open i {
+  transform: rotate(180deg);
 }

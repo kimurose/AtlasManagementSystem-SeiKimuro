@@ -7,3 +7,9 @@ $(function () {
     $('.subject_inner').slideToggle();
   });
 });
+
+$(document).ready(function() {
+  $('.search_conditions').on('click', function() {
+    $(this).toggleClass('open');
+  });
+});
