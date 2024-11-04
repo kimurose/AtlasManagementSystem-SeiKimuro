@@ -25,11 +25,11 @@
 
       @if(Auth::user()->isTeacher())
         <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}"><img src="{{ asset('image/calendar_check_hoso.png') }}" alt="スクール予約確認のアイコン" style="width: 20px; height: 20px;">スクール予約確認</a></p>
-        <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}"><img src="{{ asset('image/watermark.jpg') }}" alt="スクール枠登録のアイコン" style="width: 20px; height: 20px;">スクール枠登録</a></p>
+        <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}"><img src="{{ asset('image/署名アイコン.png') }}" alt="スクール枠登録のアイコン" style="width: 20px; height: 20px;">スクール枠登録</a></p>
       @endif
       
-      <p><a href="{{ route('post.show') }}"><img src="{{ asset('image/92178446.webp') }}" alt="掲示板のアイコン" style="width: 20px; height: 20px;">掲示板</a></p>
-      <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
+      <p><a href="{{ route('post.show') }}"><img src="{{ asset('image/無料のコメントアイコン素材.png') }}" alt="掲示板のアイコン" style="width: 20px; height: 20px;">掲示板</a></p>
+      <p><a href="{{ route('user.show') }}"><img src="{{ asset('image/友だちの無料アイコン3.png') }}" alt="ユーザーのアイコン" style="width: 20px; height: 20px;">ユーザー検索</a></p>
       @show
     </div>
     <div class="main-container">

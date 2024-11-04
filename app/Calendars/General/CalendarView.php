@@ -70,7 +70,7 @@ class CalendarView{
                 // : 'リモ3部参加')) 
                 // . '</p>';
                 // 過去の日付で予約があった時の表示
-                $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">' . $reservePartName . '参加</p>';
+                $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px; white-space: nowrap;">' . $reservePartName . '参加</p>';
                 $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
             } else {  //今日以降の日にち→つまり未来日
                 // $html[] = '<button type="button" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'" data-toggle="modal" data-target="#deleteModal" onclick="setDeleteValue(this.value)">'. $reservePart .'</button>';

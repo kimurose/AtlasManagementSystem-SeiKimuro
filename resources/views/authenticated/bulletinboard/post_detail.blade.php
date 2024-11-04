@@ -24,7 +24,7 @@
 
         <p>
           @foreach($post->subCategories as $subCategory)
-          <span>{{ $subCategory->sub_category ?? 未設定 }}</span>
+          <span class="sub_categories">{{ $subCategory->sub_category ?? 未設定 }}</span>
           @endforeach
         </p>
 

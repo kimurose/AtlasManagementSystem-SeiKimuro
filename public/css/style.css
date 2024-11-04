@@ -15,11 +15,17 @@ li{
 
 /* サイドバー */
 .sidebar{
-  width:150px;
+  width:13%;
   height:100vh;
   background-color:#03AAD2;
   font-weight:bold;
+  padding: 10px;
 }
+
+.sidebar img {
+  filter: brightness(0) invert(1);
+}
+
 .main-container{
   width:100%;
 }
@@ -92,7 +98,6 @@ li{
 
 /* 掲示板 */
 .sub_categories{
-  /* display:none; */
   display: inline-block;
   padding: 5px 10px;
   margin-right: 5px;
@@ -108,10 +113,15 @@ li{
   font-weight: bold;
 }
 
-.post_title {
+.post_title a {
   color: black;
   font-weight: bold;
 }
+
+/* p a {
+  color: black;
+  font-weight: bold;
+} */
 
 .post_submit {
   display: inline-block;
@@ -120,6 +130,14 @@ li{
   color: white;
   width: 100%;
   text-decoration: none;
+  margin-bottom: 10px;
+  text-align: center;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.post-submit-btn {
+  color: white;
 }
 
 .post_create_area{
@@ -145,6 +163,33 @@ li{
 .like_btn,
 .fa-comment{
   color: #766f6f;
+}
+
+.search_keyword {
+  margin-bottom: 10px;
+  display: flex;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.search_keyword input[type="text"] {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.search_keyword input[type="submit"] {
+  background-color: #03AAD2;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 0 10px 10px 0;
+  width: 30%;
 }
 
 
@@ -180,6 +225,11 @@ li{
 }
 .edit-modal-open{
   cursor:pointer;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 .modal-inner-body textarea{
   height:150px;
@@ -188,6 +238,19 @@ li{
 .edit-modal-btn{
   justify-content: space-between;
 }
+
+.delete-modal-open {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.delete-modal-open:hover {
+  text-decoration: none;
+}
+
 /* 掲示板 コメント */
 .comment_container{
   background:#FFF;
@@ -221,33 +284,51 @@ li{
   color:#FFF;
 }
 .category_btn{
-  font-size:12px;
+  font-size:17px;
   border-radius:5px;
   padding:0 5px;
   border:none;
   background: rgb(228, 218, 27);
   color:#FFF;
   width: 49%;
+  height: 30px;
 }
 
 .category_like_btn {
-  font-size: 12px;
+  font-size: 17px;
   border-radius: 5px;
   padding: 0 5px;
   border: none;
   background: rgb(224, 27, 158);
   color: white;
   width: 49%;
+  height: 30px;
 }
 
 .category_list {
   list-style-type: none;
   padding: 0;
+  margin-bottom: 10px;
+  /* border-bottom: 1px solid #fff; */
+}
+
+.category_title {
+  border-bottom: 2px solid #9E9E9E;
+  display: inline-block;
+  width: 100%;
+  margin: 10px 0;
+  font-size: 17px;
+}
+
+li a {
+  color: black;
 }
 
 .main_category {
   cursor: pointer;
   margin-bottom: 5px;
+  /* display: flex; */
+  position: relative;
 }
 
 .sub_category_list {
@@ -256,8 +337,17 @@ li{
   padding: 0;
 }
 
+.sub_category_title {
+  border-bottom: 2px solid #9E9E9E;
+  width: 80%;
+}
+
 .arrow-icon {
   transition: transform 0.3s;
+  position: absolute;
+  right: 0;
+  top: 5px;
+  transform-origin: center;
 }
 
 .arrow-icon.rotate {
@@ -274,28 +364,41 @@ li{
 .reserve_users_area{
   display:flex;
   flex-wrap:wrap;
-  width:800px;
+  /* width:800px; */
   margin:10px auto;
   height:80vh;
-  overflow: scroll;
+  /* overflow: scroll; */
   padding:10px;
-  background:#FFF;
+  /* background:#FFF; */
   border-radius:5px;
 }
 .reserve_users_area span{
   font-size:12px;
 }
 .one_person{
-  width:250px;
-  height:250px;
+  width: 215px;
+  height: auto;
+  margin: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: #fff;
 }
 .search_conditions span{
   cursor:pointer;
+  margin-bottom: 5px;
 }
+
 .search_conditions_inner{
   display:none;
-  background:#FFF;
+  background:#ECF1F6;
 }
+
+.search_conditions_inner label {
+  display: block;
+  margin-bottom: 5px;
+}
+
 .subject_edit_btn{
   font-size:12px;
   color:#0000FF;
@@ -307,6 +410,8 @@ li{
 
 .search_conditions {
   cursor: pointer;
+  display: flex;
+  position: relative;
 }
 
 .search_conditions i {
@@ -315,4 +420,119 @@ li{
 
 .search_conditions.open i {
   transform: rotate(180deg);
+}
+
+/* .search-btn {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 10px;
+  background-color: #03AAD2;
+  color: white;
+  font-size: 0.9em;
+  text-decoration: none;
+  letter-spacing: -1.5px;
+  border: none;
+  outline: none;
+} */
+
+.search-btn {
+  display: inline-block;
+  background-color: #03AAD2;
+  border-radius: 5px;
+  color: white;
+  width: 100%;
+  text-decoration: none;
+  margin-bottom: 10px;
+  text-align: center;
+  padding: 3px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="reset"] {
+  background: none;
+  border: none;
+  color: #03AAD2;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.search_area {
+  background-color: #ECF1F6;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.search_area input[type="text"],
+.search_area select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #F5F7FA;
+  margin-bottom: 10px;
+}
+
+.search {
+  font-size: 20px;
+  color: #766f6f;
+}
+
+.search-condition {
+  color: #766f6f;
+}
+
+.search-addition {
+  color: #766f6f;
+  border-bottom: 2px solid #766f6f;
+  width: 100%;
+  display: inline-block;
+}
+
+
+/* 予約詳細ページ */
+.custom-container {
+  background-color: #f8f9fa;
+  width: 80%;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 10%;
+  height: 63%;
+}
+
+.custom-table-container {
+  border-radius: 5px;
+  /* overflow: hidden; */
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.custom-table th {
+  background-color: #03AAD2;
+  font-weight: bold;
+  color: white;
+  padding: 10px;
+}
+
+.custom-table td {
+  background-color: #a5d9f2;
+  /* padding: 8px; */
+  /* border-bottom: 1px solid #ddd; */
+}
+
+.custom-table tr:nth-child(even) td {
+  background-color: #f8f9fa;
+}
+
+.selected_engineer,
+.search-gender {
+  margin: 20px 0;
 }

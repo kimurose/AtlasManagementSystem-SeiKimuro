@@ -7,7 +7,7 @@
     @foreach($posts as $post)
     <div class="post_area border w-75 m-auto p-3">
       <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
-      <p class=""><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
+      <p class="post_title"><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
 
       
        
@@ -36,11 +36,11 @@
     </div>
     @endforeach
   </div>
-  <div class="other_area border w-25">
-    <div class="border m-4">
-      <div class="post_submit"><a href="{{ route('post.input') }}">投稿</a></div>
+  <div class="other_area w-25">
+    <div class="m-4">
+      <div class="post_submit"><a href="{{ route('post.input') }}" class="post-submit-btn">投稿</a></div>
       <form action="{{ route('post.search') }}" method="get" id="postSearchRequest">
-        <div class="">
+        <div class="search_keyword">
           <input type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
           <input type="submit" value="検索" form="postSearchRequest">
         </div>
@@ -48,6 +48,7 @@
         <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest">
       </form>
       
+      <p>カテゴリー検索</p>
       <ul class="category_list">
         @foreach($categories as $category)
         <li class="main_category" category_id="{{ $category->id }}">
@@ -56,7 +57,7 @@
           @if($category->subCategories->isNotEmpty())
           <ul class="sub_category_list" style="display: none;">
             @foreach($category->subCategories as $subCategory)
-            <li><a href="{{ route('post.by.sub_category', $subCategory->id) }}">{{ $subCategory->sub_category ?? '未設定' }}</a></li>
+            <li class="sub_category_title"><a href="{{ route('post.by.sub_category', $subCategory->id) }}">{{ $subCategory->sub_category ?? '未設定' }}</a></li>
             @endforeach
           </ul>
           @endif
