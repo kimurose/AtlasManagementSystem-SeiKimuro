@@ -76,7 +76,7 @@ class CalendarsController extends Controller
                 $reserve_settings->increment('limit_users');
 
             }
-            $reserve_settings->delete();
+            // $reserve_settings->delete();
 
             DB::commit();
         }catch(\Exception $e){

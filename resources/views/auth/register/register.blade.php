@@ -16,11 +16,11 @@
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="register_content">
     <form action="{{ route('registerPost') }}" method="POST">
         {{ csrf_field() }}
         <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
-            <div class="w-25 vh-75 border p-3">
+            <div class="w-25 vh-75 border p-3 register_item">
                 <div class="register_form">
                     <div class="d-flex mt-3" style="justify-content:space-between">
                         <div class="" style="width:140px">

@@ -145,9 +145,18 @@ class PostsController extends Controller
         $keyword = $request->input('keyword');
         $posts = [];
 
-        if ($keyword) {
+        if ($request->like_posts) {
+            // いいねした投稿を取得
+            $likes = Auth::user()->likePostId()->get('like_post_id');
+            $posts = Post::with('user')->withCount('postComments')
+                ->whereIn('id', $likes)->get();
+        } elseif ($request->my_posts) {
+            // 自分の投稿を取得
+            $posts = Post::with('user')->withCount('postComments')
+                ->where('user_id', Auth::id())->get();
+        } elseif ($keyword) {
+            // キーワード検索による投稿を取得
             $subCategories = SubCategory::where('sub_category', $keyword)->pluck('id');
-
             $posts = Post::whereIn('id', function ($query) use ($subCategories) {
                 $query->select('post_id')->from('post_sub_categories')->whereIn('sub_category_id', $subCategories);
             })->with('user')->withCount('postComments')->get();

@@ -21,13 +21,13 @@ class CalendarView{
     $html[] = '<table class="table">';
     $html[] = '<thead>';
     $html[] = '<tr>';
-    $html[] = '<th>月</th>';
-    $html[] = '<th>火</th>';
-    $html[] = '<th>水</th>';
-    $html[] = '<th>木</th>';
-    $html[] = '<th>金</th>';
-    $html[] = '<th>土</th>';
-    $html[] = '<th>日</th>';
+    $html[] = '<th class="border">月</th>';
+    $html[] = '<th class="border">火</th>';
+    $html[] = '<th class="border">水</th>';
+    $html[] = '<th class="border">木</th>';
+    $html[] = '<th class="border">金</th>';
+    $html[] = '<th class="border day-sat">土</th>';
+    $html[] = '<th class="border day-sun">日</th>';
     $html[] = '</tr>';
     $html[] = '</thead>';
     $html[] = '<tbody>';
@@ -42,10 +42,10 @@ class CalendarView{
 
         if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {
           // 過去日
-          $html[] = '<td class="calendar-td past-day border">';
+          $html[] = '<td class="calendar-td border past-day '.$day->getClassName().'">';
         } else {
             // 未来の日付に対応
-            $html[] = '<td class="calendar-td '.$day->getClassName().'">';
+            $html[] = '<td class="calendar-td border '.$day->getClassName().'">';
         }
         
         $html[] = $day->render();
@@ -78,7 +78,7 @@ class CalendarView{
                 $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
             }
         } else {  //予約がない日
-            if ($startDay <= $day->everyDay() && $toDay > $day->everyDay()) {  //今日より前の日にち→つまり過去日
+            if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {  //今日より前の日にち→つまり過去日
               $html[] = '<p class="text-center text-muted">受付終了</p>';
               $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
             } else {
