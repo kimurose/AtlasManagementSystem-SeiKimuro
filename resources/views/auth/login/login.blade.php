@@ -14,11 +14,11 @@
 </head>
 <body class="login_content">
   <div class="text-center pt-3">
-    <img src="{{ asset('image/atlas-black.png') }}" alt="Atlas Logo">
+    <img src="{{ asset('image/atlas-black.png') }}" alt="Atlas Logo" style="width: 200px; height: 90px;">
   </div>
   <form action="{{ route('loginPost') }}" method="POST">
     {{ csrf_field() }}
-    <div class="w-100 vh-90 d-flex" style="align-items:center; justify-content:center;">
+    <div class="w-100 vh-35 d-flex" style="align-items:center; justify-content:center;">
       <div class="border vh-50 w-25 login_item">
         <div class="w-75 m-auto pt-5">
           <label class="d-block m-0" style="font-size:13px;">メールアドレス</label>

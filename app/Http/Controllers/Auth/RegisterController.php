@@ -86,7 +86,7 @@ class RegisterController extends Controller
             $user = User::findOrFail($user_get->id);
             $user->subjects()->attach($subjects);
             DB::commit();
-            return view('auth.login.login');
+            return redirect('/login');
         }catch(\Exception $e){
             DB::rollback();
             return redirect()->route('login')->withErrors('登録に失敗しました。');
